@@ -1,10 +1,13 @@
 package com.abhishek.productservice.controller;
 
 import com.abhishek.productservice.dto.ProductRequest;
+import com.abhishek.productservice.dto.ProductResponse;
 import com.abhishek.productservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/product")
@@ -18,4 +21,11 @@ public class ProductController {
     {
         productService.createProduct(productRequest);
     }
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<ProductResponse> getAllProducts()
+    {
+        return productService.getAllProducts();
+    }
+
 }
